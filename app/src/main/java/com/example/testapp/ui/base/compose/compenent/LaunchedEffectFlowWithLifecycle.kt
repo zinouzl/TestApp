@@ -1,0 +1,20 @@
+package com.example.testapp.ui.base.compose.compenent
+
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import kotlinx.coroutines.flow.Flow
+
+@Composable
+fun <T> LaunchedEffectFlowWithLifecycle(
+    flow: Flow<T>,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    collect: suspend (T) -> Unit
+) {
+    val lifecycleOwner = LocalLifecycleOwner.current
+    LaunchedEffect(flow) {
+        flow.flowWithLifecycle(lifecycleOwner.lifecycle, minActiveState).collect(collect)
+    }
+}
