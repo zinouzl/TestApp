@@ -39,9 +39,9 @@ class AuthViewModel @Inject constructor(
 
         @Stable
         data class Content(
-            val isLoading: Boolean,
-            val isOnError: Boolean,
-            val userInput: TextFieldValue,
+            val isLoading: Boolean = false,
+            val isOnError: Boolean = false,
+            val userInput: TextFieldValue = TextFieldValue(),
         ) : State
 
         @Stable
