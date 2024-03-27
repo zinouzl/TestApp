@@ -40,3 +40,7 @@ For that, I need to find a way to delete data module dependency on the presentat
 ### UI Tests
 
 Writing some UI tests with Compose rule.
+
+### Doc
+
+Writing some cool documentations
