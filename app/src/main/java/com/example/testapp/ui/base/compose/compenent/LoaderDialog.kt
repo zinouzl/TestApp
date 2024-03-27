@@ -124,7 +124,7 @@ private fun InfiniteTransition.fraction(
         animationSpec = infiniteRepeatable(
             animation = keyframes {
                 this.durationMillis = duration
-                0f at delayMillis / 2 with easing
+                0f at delayMillis / 2 using easing
                 1f at durationMillis + (delayMillis / 2)
                 1f at duration
             }

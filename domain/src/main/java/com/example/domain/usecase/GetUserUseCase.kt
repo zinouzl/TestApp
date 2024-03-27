@@ -5,7 +5,6 @@ import com.example.domain.common.UseCaseParams
 import com.example.domain.model.User
 import com.example.domain.repository.AuthRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 class GetUserUseCase @Inject constructor(
