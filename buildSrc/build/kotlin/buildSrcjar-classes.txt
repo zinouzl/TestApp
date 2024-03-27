@@ -1,0 +1,1 @@
+/Users/zineeddinelatioui/AndroidStudioProjects/TestApp/buildSrc/build/classes/kotlin/main/DefaultConfig$App.class:/Users/zineeddinelatioui/AndroidStudioProjects/TestApp/buildSrc/build/classes/kotlin/main/DefaultConfig$Sdk.class:/Users/zineeddinelatioui/AndroidStudioProjects/TestApp/buildSrc/build/classes/kotlin/main/DefaultConfig.class
