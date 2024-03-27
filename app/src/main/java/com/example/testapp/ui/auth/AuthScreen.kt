@@ -97,6 +97,7 @@ private fun Content(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
         )
         LargeButtonPrimary(
+            modifier = Modifier.padding(16.dp),
             text = stringResource(id = R.string.connect),
             onClick = onClick
         )
