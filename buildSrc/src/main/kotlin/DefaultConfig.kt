@@ -18,4 +18,9 @@ object DefaultConfig {
         val javaVersionName = "17"
     }
 
+    object Modules {
+        const val DATA = ":data"
+        const val DOMAIN = ":domain"
+    }
+
 }

@@ -57,10 +57,10 @@ android {
 
 dependencies {
 
-    implementation(project(":domain"))
+    implementation(project(DefaultConfig.Modules.DOMAIN))
 
     //TODO check how to remove this need it to make hilt works
-    implementation(project(":data"))
+    implementation(project(DefaultConfig.Modules.DATA))
 
     api(libs.compose.navigation)
 
