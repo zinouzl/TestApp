@@ -38,12 +38,18 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.okhttp)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    //ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.logging)
 
     //koin
     implementation(platform(libs.koin.bom))
