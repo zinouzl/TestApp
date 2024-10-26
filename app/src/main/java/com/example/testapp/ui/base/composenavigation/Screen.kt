@@ -1,21 +1,21 @@
 package com.example.testapp.ui.base.composenavigation
 
-import androidx.navigation.NavType
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-internal sealed class Screen(route: String) : NavigationScreen(route) {
+@Parcelize
+@Serializable
+data class Profile(val userId: Int, val userEmail: String) : Parcelable
 
-    data object LoginScreen : Screen(route = "login_screen")
+@Serializable
+internal sealed interface Screen {
 
-    data object PostsScreen : Screen(route = "posts_screen") {
+    @Serializable
+    data object LoginScreen : Screen
 
-        override fun getArgs(): List<Args> = listOf(
-            USER_ID to NavType.IntType,
-            USER_EMAIL to NavType.StringType
-        ).map { Args(it.first, it.second) }
-    }
-
-    internal companion object {
-        const val USER_ID = "deviceId"
-        const val USER_EMAIL = "userEmail"
-    }
+    @Serializable
+    data class PostsScreen(
+        val profile: Profile
+    ) : Screen
 }

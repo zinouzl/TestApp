@@ -2,7 +2,6 @@ package com.example.testapp.ui.posts
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Post
@@ -10,7 +9,7 @@ import com.example.domain.usecase.GetUserPostsUseCase
 import com.example.testapp.ui.base.ViewModelEvent
 import com.example.testapp.ui.base.ViewModelEventDelegate
 import com.example.testapp.ui.base.ViewModelEventDelegateImpl
-import com.example.testapp.ui.base.composenavigation.Screen
+import com.example.testapp.ui.base.composenavigation.Profile
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +20,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class PostViewModel(
-    private val savedStateHandle: SavedStateHandle,
+    private val profile: Profile,
     private val getUserPostsUseCase: GetUserPostsUseCase
 ) : ViewModel(),
     ViewModelEventDelegate<PostViewModel.Event> by ViewModelEventDelegateImpl() {
@@ -65,8 +64,8 @@ class PostViewModel(
     private fun initValues() {
         viewModelScope.launch {
             _isLoading.update { true }
-            _userEmail.update { savedStateHandle.get<String>(Screen.USER_EMAIL) ?: "" }
-            val userId = savedStateHandle.get<Int>(Screen.USER_ID) ?: -1
+            _userEmail.update { profile.userEmail }
+            val userId = profile.userId
 
             getUserPostsUseCase(GetUserPostsUseCase.Params(userId = userId))
                 .onSuccess { list -> _postList.update { list } }

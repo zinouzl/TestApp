@@ -36,7 +36,7 @@ import com.example.testapp.ui.base.compose.compenent.LargeButtonPrimary
 import com.example.testapp.ui.base.compose.compenent.LaunchedEffectFlowWithLifecycle
 import com.example.testapp.ui.base.compose.compenent.LoaderDialog
 import com.example.testapp.ui.base.compose.compenent.PositionalDialog
-import com.example.testapp.ui.base.composenavigation.NavigationArgs
+import com.example.testapp.ui.base.composenavigation.Profile
 import com.example.testapp.ui.base.composenavigation.Screen
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -49,14 +49,10 @@ fun AuthScreen(
     LaunchedEffectFlowWithLifecycle(flow = viewModel.event) { event ->
         when (event) {
             is AuthViewModel.Event.Navigation.UserValidated -> navController.navigate(
-                route = Screen.PostsScreen.navigationPath(
-                    NavigationArgs(
-                        Screen.USER_ID,
-                        event.userId.toString(),
-                    ),
-                    NavigationArgs(
-                        Screen.USER_EMAIL,
-                        event.userEmail
+                route = Screen.PostsScreen(
+                    Profile(
+                        userId = event.userId,
+                        userEmail = event.userEmail
                     )
                 )
             )
@@ -89,7 +85,10 @@ private fun Content(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = null
+        )
         OutlinedTextField(
             value = content.userInput,
             onValueChange = onValueChanged,
