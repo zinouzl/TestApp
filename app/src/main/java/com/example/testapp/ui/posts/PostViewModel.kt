@@ -11,7 +11,6 @@ import com.example.testapp.ui.base.ViewModelEvent
 import com.example.testapp.ui.base.ViewModelEventDelegate
 import com.example.testapp.ui.base.ViewModelEventDelegateImpl
 import com.example.testapp.ui.base.composenavigation.Screen
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,10 +19,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class PostViewModel @Inject constructor(
+class PostViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getUserPostsUseCase: GetUserPostsUseCase
 ) : ViewModel(),

@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -20,10 +18,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    hilt {
-        enableAggregatingTask = true
     }
 
     buildTypes {
@@ -86,9 +80,9 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //Dagger - Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.androidx.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
+    //koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+    implementation(libs.koin.compose.viewmodel.navigation)
 }

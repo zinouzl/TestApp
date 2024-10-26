@@ -1,22 +1,20 @@
 package com.example.data.entities
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class PostEntity(
-    @SerializedName("userId")
-    @Expose
+    @SerialName("userId")
     val userId: Int,
 
-    @SerializedName("id")
-    @Expose
+    @SerialName("id")
     val id: Int,
 
-    @SerializedName("title")
-    @Expose
+    @SerialName("title")
     val title: String,
 
-    @SerializedName("body")
-    @Expose
+    @SerialName("body")
     val body: String
 ) : Entity

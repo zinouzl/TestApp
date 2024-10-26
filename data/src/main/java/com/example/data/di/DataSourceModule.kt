@@ -2,39 +2,28 @@ package com.example.data.di
 
 import com.example.data.services.AuthService
 import com.example.data.services.PostService
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
+private val json = Json { ignoreUnknownKeys = true }
 
-@Module
-@InstallIn(SingletonComponent::class)
-object DataSourceModule {
+private fun provideRetrofit(): Retrofit = Retrofit.Builder()
+    .baseUrl(BASE_URL)
+    .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+    .build()
 
-    @Singleton
-    @Provides
-    fun provideRetrofitInstance(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+private fun provideAuthService(retrofit: Retrofit): AuthService =
+    retrofit.create(AuthService::class.java)
 
-    @Singleton
-    @Provides
-    fun provideAuthService(retrofit: Retrofit): AuthService {
-        return retrofit.create(AuthService::class.java)
-    }
+private fun providesPostService(retrofit: Retrofit): PostService =
+    retrofit.create(PostService::class.java)
 
-    @Singleton
-    @Provides
-    fun providePostService(retrofit: Retrofit): PostService {
-        return retrofit.create(PostService::class.java)
-    }
+val dataSourceModule = module {
+    single { provideRetrofit() }
+    single { provideAuthService(get()) }
+    single { providesPostService(get()) }
 }
-
 const val BASE_URL = "https://jsonplaceholder.typicode.com"

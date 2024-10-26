@@ -2,10 +2,9 @@ package com.example.data.mapper
 
 import com.example.data.entities.UserEntity
 import com.example.domain.model.User
-import javax.inject.Inject
 
 
-class UserMapper @Inject constructor() : Mapper<UserEntity, User> {
+class UserMapper : Mapper<UserEntity, User> {
 
     override fun toData(entity: UserEntity): User {
         return entity.run {

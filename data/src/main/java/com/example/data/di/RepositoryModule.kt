@@ -4,26 +4,10 @@ import com.example.data.repository.AuthRepositoryImpl
 import com.example.data.repository.PostRepositoryImpl
 import com.example.domain.repository.AuthRepository
 import com.example.domain.repository.PostRepository
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
 
-    @Binds
-    @Singleton
-    abstract fun bindAuthRepository(
-        authRepositoryImpl: AuthRepositoryImpl
-    ): AuthRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindPostRepository(
-        postRepositoryImpl: PostRepositoryImpl
-    ): PostRepository
-
+val repositoryModule = module {
+    single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
+    single<PostRepository> { PostRepositoryImpl(get(), get()) }
 }

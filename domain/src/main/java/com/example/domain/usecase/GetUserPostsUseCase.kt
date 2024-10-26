@@ -6,9 +6,8 @@ import com.example.domain.model.Post
 import com.example.domain.repository.PostRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Inject
 
-class GetUserPostsUseCase @Inject constructor(
+class GetUserPostsUseCase(
     override val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val postRepository: PostRepository
 ) : SuspendingUseCase<GetUserPostsUseCase.Params, List<Post>>() {
