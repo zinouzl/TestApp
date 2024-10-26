@@ -1,35 +1,31 @@
 [versions]
-hiltAndroid = "2.49"
-hiltCompiler = "1.2.0"
 koinBom = "4.0.0"
-kotlinxCoroutinesAndroid = "1.7.1"
-kotlinxCoroutinesCore = "1.7.1"
-kotlinxCoroutinesTest = "1.8.1-Beta"
+kotlinxCoroutinesAndroid = "1.9.0"
+kotlinxCoroutinesCore = "1.9.0"
+kotlinxCoroutinesTest = "1.9.0"
 kotlinxSerializationJson = "1.6.0"
-lifecycleViewmodelCompose = "2.7.0"
+lifecycleViewmodelCompose = "2.8.6"
 mockkAgent = "1.13.10"
 mockkAndroid = "1.13.10"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
-compose = "2024.03.00"
+compose = "2024.10.00"
 junit4 = "4.13.2"
-junit = "1.1.5"
-kotlinKtx = "1.12.0"
+junit = "1.2.1"
+kotlinKtx = "1.13.1"
 retrofit2KotlinxSerializationConverter = "1.0.0"
-runtimKtx = "2.7.0"
-composeActivity = "1.8.2"
-composeNavigation = "2.7.7"
-espresso = "3.5.1"
+runtimKtx = "2.8.6"
+composeActivity = "1.9.3"
+composeNavigation = "2.8.3"
+espresso = "3.6.1"
 agp = "8.7.1"
-kotlin = "1.9.10"
-appcompat = "1.6.1"
-material = "1.11.0"
+kotlin = "2.0.20"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "kotlinKtx" }
-androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
-androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltCompiler" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "runtimKtx" }
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
@@ -38,10 +34,8 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling-preview
 androidx-compose-ui-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
-hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
-hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroid" }
 junit4 = { module = "junit:junit", version.ref = "junit4" }
+test = { module = "org.jetbrains.kotlin:test", version.ref = "kotlin" }
 androidx-test-ext = { module = "androidx.test.ext:junit", version.ref = "junit" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-test-tooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -50,7 +44,7 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
-koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel"}
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 koin-compose-viewmodel-navigation = { module = "io.insert-koin:koin-compose-viewmodel-navigation" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
@@ -67,5 +61,8 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 
 [plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

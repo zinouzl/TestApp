@@ -44,7 +44,7 @@ dependencies {
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.koin.compose.viewmodel.navigation)
 
-    testImplementation(kotlin("test"))
+    testImplementation(libs.test)
     testImplementation(libs.junit4)
     testImplementation(libs.mockk.android)
     testImplementation(libs.mockk.agent)

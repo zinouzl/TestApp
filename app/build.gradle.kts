@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.material3)
     testImplementation(libs.junit4)
-    testImplementation(kotlin("test"))
+    testImplementation(libs.test)
     testImplementation(libs.mockk.android)
     testImplementation(libs.mockk.agent)
     testImplementation(libs.kotlinx.coroutines.test)
