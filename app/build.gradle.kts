@@ -1,8 +1,9 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -20,10 +21,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    hilt {
-        enableAggregatingTask = true
     }
 
     buildTypes {
@@ -68,6 +65,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.activity)
+    implementation(libs.kotlinx.serialization.json)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.compose.ui)
@@ -75,7 +73,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.material3)
     testImplementation(libs.junit4)
-    testImplementation(kotlin("test"))
+    testImplementation(libs.test)
     testImplementation(libs.mockk.android)
     testImplementation(libs.mockk.agent)
     testImplementation(libs.kotlinx.coroutines.test)
@@ -86,9 +84,9 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //Dagger - Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.androidx.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
+    //koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+    implementation(libs.koin.compose.viewmodel.navigation)
 }

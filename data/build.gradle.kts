@@ -2,8 +2,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -15,10 +14,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-    }
-
-    hilt {
-        enableAggregatingTask = true
     }
 
     buildTypes {
@@ -42,17 +37,27 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.okhttp)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    //hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.androidx.hilt.compiler)
+    //ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.logging)
 
-    testImplementation(kotlin("test"))
+    //koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+    implementation(libs.koin.compose.viewmodel.navigation)
+
+    testImplementation(libs.test)
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.test.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)

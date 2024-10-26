@@ -2,8 +2,6 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -16,10 +14,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-    }
-
-    hilt {
-        enableAggregatingTask = true
     }
 
     buildTypes {
@@ -44,12 +38,13 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
 
-    //hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    kapt(libs.androidx.hilt.compiler)
+    //koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
+    implementation(libs.koin.compose.viewmodel.navigation)
 
-    testImplementation(kotlin("test"))
+    testImplementation(libs.test)
     testImplementation(libs.junit4)
     testImplementation(libs.mockk.android)
     testImplementation(libs.mockk.agent)

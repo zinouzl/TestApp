@@ -29,7 +29,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.testapp.R
 import com.example.testapp.ui.base.compose.DialogPosition
@@ -37,26 +36,23 @@ import com.example.testapp.ui.base.compose.compenent.LargeButtonPrimary
 import com.example.testapp.ui.base.compose.compenent.LaunchedEffectFlowWithLifecycle
 import com.example.testapp.ui.base.compose.compenent.LoaderDialog
 import com.example.testapp.ui.base.compose.compenent.PositionalDialog
-import com.example.testapp.ui.base.composenavigation.NavigationArgs
+import com.example.testapp.ui.base.composenavigation.Profile
 import com.example.testapp.ui.base.composenavigation.Screen
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AuthScreen(
-    viewModel: AuthViewModel = viewModel(),
+    viewModel: AuthViewModel = koinViewModel<AuthViewModel>(),
     navController: NavController
 ) {
 
     LaunchedEffectFlowWithLifecycle(flow = viewModel.event) { event ->
         when (event) {
             is AuthViewModel.Event.Navigation.UserValidated -> navController.navigate(
-                route = Screen.PostsScreen.navigationPath(
-                    NavigationArgs(
-                        Screen.USER_ID,
-                        event.userId.toString(),
-                    ),
-                    NavigationArgs(
-                        Screen.USER_EMAIL,
-                        event.userEmail
+                route = Screen.PostsScreen(
+                    Profile(
+                        userId = event.userId,
+                        userEmail = event.userEmail
                     )
                 )
             )
@@ -89,7 +85,10 @@ private fun Content(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null)
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = null
+        )
         OutlinedTextField(
             value = content.userInput,
             onValueChange = onValueChanged,

@@ -5,9 +5,8 @@ import com.example.domain.common.UseCaseParams
 import com.example.domain.model.User
 import com.example.domain.repository.AuthRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import javax.inject.Inject
 
-class GetUserUseCase @Inject constructor(
+class GetUserUseCase(
     override val dispatcher: CoroutineDispatcher,
     private val repository: AuthRepository
 ) : SuspendingUseCase<GetUserUseCase.Params, User>() {
