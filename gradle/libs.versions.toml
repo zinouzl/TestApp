@@ -6,6 +6,7 @@ kotlinxCoroutinesTest = "1.9.0"
 kotlinxSerializationJson = "1.7.3"
 ktor = "3.0.0"
 lifecycleViewmodelCompose = "2.8.6"
+jetbrainsLifecycleViewmodelCompose = "2.8.3"
 mockkAgent = "1.13.10"
 mockkAndroid = "1.13.10"
 okhttp = "4.12.0"
@@ -18,23 +19,36 @@ retrofit2KotlinxSerializationConverter = "1.0.0"
 runtimKtx = "2.8.6"
 composeActivity = "1.9.3"
 composeNavigation = "2.8.3"
+compose-plugin = "1.6.11"
 espresso = "3.6.1"
 agp = "8.7.1"
 kotlin = "2.0.20"
 appcompat = "1.7.0"
 material = "1.12.0"
+jetbrainsKotlinMultiplatform = "2.0.20"
+androidKotlinMultiplatformLibrary = "8.7.1"
+kotlinStdlib = "2.0.20"
+runner = "1.6.2"
+core = "1.6.1"
+navigationComposeVersion = "2.8.0-alpha10"
+jetbrainsKotlinJvm = "1.9.24"
 
 [libraries]
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "kotlinKtx" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "runtimKtx" }
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
+
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-compose-ui-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "jetbrainsLifecycleViewmodelCompose" }
+androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "jetbrainsLifecycleViewmodelCompose" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlin" }
+navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 junit4 = { module = "junit:junit", version.ref = "junit4" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
@@ -50,7 +64,6 @@ androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
 androidx-compose-ui-test-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
-
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 koin-compose = { module = "io.insert-koin:koin-compose" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
@@ -68,11 +81,18 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
 
 [plugins]
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidApplication = { id = "com.android.application", version.ref = "agp"}
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "jetbrainsKotlinMultiplatform" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "androidKotlinMultiplatformLibrary" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

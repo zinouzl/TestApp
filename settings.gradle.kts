@@ -14,6 +14,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "TestApp"
-include(":app")
-include(":domain")
-include(":data")
+include(":shared")
+include(":shared:data")
+include(":shared:domain")
+include(":shared:presentation")
