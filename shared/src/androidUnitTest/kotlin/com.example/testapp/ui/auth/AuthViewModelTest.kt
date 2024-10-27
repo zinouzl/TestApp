@@ -1,8 +1,9 @@
 package com.example.testapp.ui.auth
 
 import androidx.compose.ui.text.input.TextFieldValue
-import com.example.domain.model.User
-import com.example.domain.usecase.GetUserUseCase
+import com.example.shared.domain.model.User
+import com.example.shared.domain.usecase.GetUserUseCase
+import com.example.shared.presentation.ui.auth.AuthViewModel
 import com.example.testapp.BaseUnitTest
 import io.mockk.coEvery
 import io.mockk.mockk

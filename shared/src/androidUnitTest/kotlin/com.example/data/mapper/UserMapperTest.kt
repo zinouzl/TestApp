@@ -1,7 +1,7 @@
 package com.example.data.mapper
 
-import com.example.data.entities.UserEntity
-import com.example.domain.model.User
+import com.example.shared.data.entities.UserEntity
+import com.example.shared.domain.model.User
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -22,11 +22,11 @@ private val FAKE_USER_ENTITY = UserEntity(
 
 class UserMapperTest {
 
-    private lateinit var mapper: UserMapper
+    private lateinit var mapper: com.example.shared.data.mapper.UserMapper
 
     @Before
     fun setUp() {
-        mapper = UserMapper()
+        mapper = com.example.shared.data.mapper.UserMapper()
     }
 
     @Test

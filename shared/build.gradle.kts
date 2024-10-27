@@ -25,6 +25,11 @@ kotlin {
 // configure native binary output. For more information, see:
 // https://kotlinlang.org/docs/multiplatform-build-native-binaries.html#build-xcframeworks
 
+    targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().all {
+        binaries.all {
+            freeCompilerArgs += listOf("-Xbinary=gcMarkSingleThreaded=true", "-Xbinary=concurrentWeakSweep=false", "-Xbinary=gc=stwms" )
+        }
+    }
 // A step-by-step guide on how to include this library in an XCode
 // project can be found here:
 // https://developer.android.com/kotlin/multiplatform/migrate
@@ -49,20 +54,27 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(project(DefaultConfig.Modules.DATA))
-                implementation(project(DefaultConfig.Modules.DOMAIN))
-                implementation(project(DefaultConfig.Modules.PRESENTATION))
                 implementation(libs.kotlin.stdlib)
+                implementation(compose.ui)
+                implementation(libs.kotlinx.serialization.json)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
-                implementation(compose.ui)
-                implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
+                implementation(compose.material)
                 implementation(libs.androidx.lifecycle.viewmodel)
                 implementation(libs.androidx.lifecycle.runtime.compose)
                 implementation(libs.navigation.compose)
                 // Add KMP dependencies here
+
+                //ktor
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.cio)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.client.logging)
 
                 //koin
                 implementation(project.dependencies.platform(libs.koin.bom))
@@ -81,9 +93,7 @@ kotlin {
 
         androidMain {
             dependencies {
-                // Add Android-specific dependencies here. Note that this source set depends on
-                // commonMain by default and will correctly pull the Android artifacts of any KMP
-                // dependencies declared in commonMain.
+                implementation(libs.ktor.client.okhttp)
             }
         }
 
@@ -107,11 +117,7 @@ kotlin {
 
         iosMain {
             dependencies {
-                // Add iOS-specific dependencies here. This a source set created by Kotlin Gradle
-                // Plugin (KGP) that each specific iOS target (e.g., iosX64) depends on as
-                // part of KMP’s default source set hierarchy. Note that this source set depends
-                // on common by default and will correctly pull the iOS artifacts of any
-                // KMP dependencies declared in commonMain.
+                implementation(libs.ktor.client.darwin)
             }
         }
     }
