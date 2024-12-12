@@ -1,9 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version "8.2.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.10" apply false
-    id("com.google.dagger.hilt.android") version "2.44" apply false
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.compose.compiler) apply false
+    alias(libs.plugins.kotlin.parcelize) apply false
+    alias(libs.plugins.jetbrainsCompose) apply false
+    alias(libs.plugins.jetbrains.kotlin.multiplatform) apply false
+    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
 
 
@@ -11,9 +17,5 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-    }
-
-    dependencies {
-        classpath(libs.hilt.android.gradle.plugin)
     }
 }

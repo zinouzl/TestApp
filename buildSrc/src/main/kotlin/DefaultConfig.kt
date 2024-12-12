@@ -19,8 +19,10 @@ object DefaultConfig {
     }
 
     object Modules {
-        const val DATA = ":data"
-        const val DOMAIN = ":domain"
+        const val SHARED = ":shared"
+        const val PRESENTATION = ":shared:presentation"
+        const val DATA = ":shared:data"
+        const val DOMAIN = ":shared:domain"
     }
 
 }
